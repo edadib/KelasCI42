@@ -29,4 +29,6 @@ $routes->post('/news/save', 'NewsController::save');
 $routes->get('/product/list', 'ProductController::index');
 $routes->get('/product/create', 'ProductController::create');
 $routes->post('/product/save', 'ProductController::save');
+$routes->post('/product/edit', 'ProductController::edit');
+$routes->post('/product/delete', 'ProductController::delete');
 

@@ -19,15 +19,62 @@ class ProductController extends BaseController
 
     public function create()
     {
-        return view('product/form');
+        $rows = false;
+        return view('product/form', ['rows' => $rows]);
     }
 
     public function save()
     {
-        // dd($_POST); 
-        $model = new ProductModel(); // create 1 new instance of object
-        $model->save($_POST);
-        return redirect()->to('/product/list');
+        $message = [
+            'name' => [
+                'required' => 'Nama wajib diisi',
+            ],
+            'desc' => [
+                'required' => 'Description wajib diisi',
+            ],
+            'price' => [
+                'required' => 'Harga wajib diisi',
+            ],
+        ];
+
+        if($this->validate([
+            'name' => 'required|string',
+            'desc' => 'required|string',
+            'price' => 'required|integer',
+        ], $message))
+        {
+            $model = new ProductModel(); // create 1 new instance of object
+            $model->save($_POST);
+            return redirect()->to('/product/list');
+        }
+        else
+        {
+            // dd($this->validator->getErrors()['name']);
+            $rows = $_POST;
+            return view('product/form', [
+                'rows' => $rows,
+                'validator' => $this->validator->getErrors(),
+            ]);
+        }
         // var_dump($_POST); die();
     }
+
+    function edit()
+    {
+        $model = new ProductModel(); // create 1 new instance of object
+        $rows = $model->find($_POST['id_product']);
+        
+        return view('product/form', ['rows' => $rows]);
+        // dd($rows);
+    }
+
+    function delete()
+    {
+        // dd($_POST);
+        $model = new ProductModel(); // create 1 new instance of object
+        $model->delete($_POST['id_product']);
+        return redirect()->to('/product/list');
+    }
+
+    
 }
