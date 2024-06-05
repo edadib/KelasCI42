@@ -101,6 +101,7 @@
 
     <!-- Custom styles for this template -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/plugins/fontawesome-free/css/all.min.css">
     <!-- Custom styles for this template -->
     <link href="/dashboard.css" rel="stylesheet">
 </head>
@@ -254,12 +255,12 @@
                         <ul class="nav flex-column">
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="/user/list">
-                                    User
+                                    <i class="fa fa-users"></i> User
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link d-flex align-items-center gap-2" href="/product/list">
-                                    Product
+                                    <i class="fa fa-list"></i> Product
                                 </a>
                             </li>
                         </ul>

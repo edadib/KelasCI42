@@ -28,8 +28,25 @@ class UserModel extends Model
     protected $deletedField  = 'deleted_at'; // untuk soft delete
 
     // Validation
-    protected $validationRules      = [];
-    protected $validationMessages   = [];
+    protected $validationRules      = [
+        'name' => 'required|string',
+        'email' => 'required|valid_email',
+        'password' => 'required|integer',
+    ];
+
+    protected $validationMessages   = [
+        'name' => [
+            'required' => 'Nama wajib diisi',
+            'alpha' => 'Nama tidak boleh ada nombor',
+        ],
+        'email' => [
+            'required' => 'Email wajib diisi',
+        ],
+        'password' => [
+            'required' => 'Password wajib diisi',
+        ],
+    ];
+
     protected $skipValidation       = false;
     protected $cleanValidationRules = true;
 

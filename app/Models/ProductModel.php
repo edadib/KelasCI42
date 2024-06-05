@@ -8,11 +8,11 @@ class ProductModel extends Model
 {
     // table yg guna adalah table ini
     protected $table = 'products';
-    // protected $primaryKey       = 'id';
-    // protected $useAutoIncrement = true;
-    // protected $returnType       = 'array';
-    // protected $useSoftDeletes   = false;
-    // protected $protectFields    = true;
+    protected $primaryKey       = 'id';
+    protected $useAutoIncrement = true;
+    protected $returnType       = 'array';
+    protected $useSoftDeletes   = false;
+    protected $protectFields    = true;
     protected $allowedFields    = ['name', 'desc','price'];
 
     // protected bool $allowEmptyInserts = false;
@@ -29,10 +29,26 @@ class ProductModel extends Model
     // protected $deletedField  = 'deleted_at';
 
     // // Validation
-    // protected $validationRules      = [];
-    // protected $validationMessages   = [];
-    // protected $skipValidation       = false;
-    // protected $cleanValidationRules = true;
+    protected $validationRules      = [
+        'name' => 'required|string',
+        'desc' => 'required|string',
+        'price' => 'required|integer',
+    ];
+
+    protected $validationMessages   = [
+        'name' => [
+            'required' => 'Nama wajib diisi',
+        ],
+        'desc' => [
+            'required' => 'Keterangan wajib diisi',
+        ],
+        'price' => [
+            'required' => 'Harga wajib diisi',
+        ],
+    ];
+    
+    protected $skipValidation       = false;
+    protected $cleanValidationRules = true;
 
     // // Callbacks
     // protected $allowCallbacks = true;

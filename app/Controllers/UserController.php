@@ -15,6 +15,7 @@ class UserController extends BaseController
     {
         $this->layout = parent::layout();
         $this->model = model('UserModel');
+        helper('form');
     }
 
     public function index()
@@ -48,23 +49,36 @@ class UserController extends BaseController
 
     public function save()
     {
+        // $message = [
+        //     'name' => [
+        //         'required' => 'Nama wajib diisi',
+        //     ],
+        //     'email' => [
+        //         'required' => 'Email wajib diisi',
+        //     ],
+        //     'password' => [
+        //         'required' => 'Password wajib diisi',
+        //     ],
+        // ];
         $message = [
             'name' => [
-                'required' => 'Nama wajib diisi',
+                'required' => $this->model->getValidationMessages()['name']['required'],
+                'alpha' => $this->model->getValidationMessages()['name']['alpha'],
             ],
             'email' => [
-                'required' => 'Email wajib diisi',
+                'required' => $this->model->getValidationMessages()['email']['required'],
             ],
             'password' => [
-                'required' => 'Password wajib diisi',
+                'required' => $this->model->getValidationMessages()['password']['required'],
             ],
         ];
 
         if($this->validate([
-            'name' => 'required|string',
-            'email' => 'required|string',
-            'password' => 'required|integer',
+            'name' => 'required|alpha',
+            'email' => 'required|valid_email',
+            'password' => 'required|min_length[3]',
         ], $message))
+        // if($this->model->save($_POST))
         {
             // $model = new ProductModel(); // create 1 new instance of object
             $this->model->save($_POST);
@@ -72,7 +86,7 @@ class UserController extends BaseController
         }
         else
         {
-            // dd($this->validator->getErrors()['name']);
+            // dd($this->validator->getErrors());
             $rows = $_POST;
             $page = 'user/form';
             $layouts = $this->layout;
