@@ -60,6 +60,9 @@ class UserController extends BaseController
         //         'required' => 'Password wajib diisi',
         //     ],
         // ];
+        
+        $session = session();
+
         $message = [
             'name' => [
                 'required' => $this->model->getValidationMessages()['name']['required'],
@@ -82,6 +85,7 @@ class UserController extends BaseController
         {
             // $model = new ProductModel(); // create 1 new instance of object
             $this->model->save($_POST);
+            $session->setFlashdata('msg', 'Berjaya');
             return redirect()->to('/user/list');
         }
         else
@@ -90,6 +94,7 @@ class UserController extends BaseController
             $rows = $_POST;
             $page = 'user/form';
             $layouts = $this->layout;
+            $session->setFlashdata('msg', 'Gagal');
             return view('layout/default', [
                 'rows' => $rows,
                 'page' => $page,

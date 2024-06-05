@@ -52,12 +52,19 @@ class UserModel extends Model
 
     // Callbacks
     protected $allowCallbacks = true;
-    protected $beforeInsert   = [];
+    protected $beforeInsert   = [];//['encrypt_pass'];
     protected $afterInsert    = [];
-    protected $beforeUpdate   = [];
+    protected $beforeUpdate   = [];//['encrypt_pass'];
     protected $afterUpdate    = [];
     protected $beforeFind     = [];
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    // function encrypt_pass()
+    // {
+    //     $_POST['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    //     // dd($_POST);
+    //     // return $_POST;
+    // }
 }

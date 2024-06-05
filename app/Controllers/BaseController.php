@@ -60,4 +60,9 @@ abstract class BaseController extends Controller
     {
         return 'layout/master.php';
     }
+
+    public function layout_login()
+    {
+        return 'layout/master_login.php';
+    }
 }

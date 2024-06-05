@@ -1,3 +1,4 @@
+
 <div class="row">
     <div class="col-10">
         <h1>Senarai Pengguna</h1>
@@ -7,6 +8,12 @@
     </div>
 </div>
 <br>
+<?php if(session()->has('msg')) : ?>
+    <div class="alert alert-success">
+        <?= session()->getFlashdata('msg') ?>
+    </div>
+<?php endif; ?>
+
 <div class="row">
     <div class="col-1">
     </div>

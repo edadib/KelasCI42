@@ -38,3 +38,8 @@ $routes->post('/user/save', 'UserController::save');
 $routes->post('/user/edit', 'UserController::edit');
 $routes->post('/user/delete', 'UserController::delete');
 
+
+$routes->get('/login/index', 'LoginController::index');
+$routes->post('/login/auth', 'LoginController::auth');
+$routes->post('/login/logout', 'LoginController::logout');
+

@@ -212,6 +212,11 @@
                                     <i class="fa fa-list"></i> Product
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex align-items-center gap-2" href="/login/index">
+                                    <i class="fa fa-list"></i> Login
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </div>
