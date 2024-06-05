@@ -42,7 +42,8 @@
         </div>
         <br>
         <div align="right">
-            <input class="form-control" type="hidden" name="id" id="id" value="<?php if($rows){ echo $rows['id']; }?>" />
+            <!-- <input class="form-control" type="hidden" name="id" id="id" value="<?php //if($rows){ echo $rows['id']; }?>" /> -->
+            <?= form_hidden('id',$rows['id']??""); ?>
             <button class="btn btn-primary btn-lg" type="submit">Hantar</button>
         </div>
 
