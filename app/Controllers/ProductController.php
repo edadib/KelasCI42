@@ -9,18 +9,38 @@ use App\Models\ProductModel;
 
 class ProductController extends BaseController
 {
+    
+    private $layout;
+
+    function __construct()
+    {
+        $this->layout = parent::layout();
+    }
+
     public function index()
     {
-        //
         $model = new ProductModel(); // create 1 new instance of object
         $rows = $model->findAll();
-        return view('product/list', ['rows' => $rows]);
+        $page = 'product/list';
+        $layouts = $this->layout;
+        return view('layout/default', [
+            'rows' => $rows,
+            'page' => $page,
+            'layout' => $layouts,
+        ]);
+        // return view('product/list', ['rows' => $rows]);
     }
 
     public function create()
     {
         $rows = false;
-        return view('product/form', ['rows' => $rows]);
+        $page = 'product/form';
+        $layouts = $this->layout;
+        return view('layout/default', [
+            'rows' => $rows,
+            'page' => $page,
+            'layout' => $layouts,
+        ]);
     }
 
     public function save()

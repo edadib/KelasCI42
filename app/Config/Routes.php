@@ -32,3 +32,9 @@ $routes->post('/product/save', 'ProductController::save');
 $routes->post('/product/edit', 'ProductController::edit');
 $routes->post('/product/delete', 'ProductController::delete');
 
+$routes->get('/user/list', 'UserController::index');
+$routes->get('/user/create', 'UserController::create');
+$routes->post('/user/save', 'UserController::save');
+$routes->post('/user/edit', 'UserController::edit');
+$routes->post('/user/delete', 'UserController::delete');
+

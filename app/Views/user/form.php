@@ -1,4 +1,8 @@
-<form action="/product/save" method="post">
+
+
+<br>
+<br>
+<form action="/user/save" method="post">
     Nama : 
     <input class="form-control" type="text" name="name" id="name" value="<?php if($rows){ echo $rows['name']; }?>" />
     <?php if(isset($validator['name'])) : ?>
@@ -8,20 +12,20 @@
     <?php endif; ?>
     <br>
 
-    Harga: 
-    <input class="form-control" type="number" name="price" id="price" min="0" max="1000000" value="<?php if($rows){ echo $rows['price']; }?>" />
-    <?php if(isset($validator['price'])) : ?>
+    Email: 
+    <input class="form-control" type="email" name="email" id="email" value="<?php if($rows){ echo $rows['email']; }?>" />
+    <?php if(isset($validator['email'])) : ?>
         <div class="alert alert-danger">
-            <?php echo $validator['price']; ?>
+            <?php echo $validator['email']; ?>
         </div>
     <?php endif; ?>
     <br>
     
-    Keterangan: 
-    <textarea class="form-control" name="desc" id="desc"><?php if($rows){ echo $rows['desc']; }?></textarea>
-    <?php if(isset($validator['desc'])) : ?>
+    Password: 
+    <input class="form-control" type="password" name="password" id="password" value="<?php if($rows){ echo $rows['password']; }?>" />
+    <?php if(isset($validator['password'])) : ?>
         <div class="alert alert-danger">
-            <?php echo $validator['desc']; ?>
+            <?php echo $validator['password']; ?>
         </div>
     <?php endif; ?>
     <br>

@@ -6,10 +6,10 @@
                 Nama
             </th>
             <th>
-                Keterangan
+                Email
             </th>
             <th>
-                Harga
+                Password
             </th>
             <th>
                 Tindakan
@@ -24,10 +24,10 @@
                     <?php echo $item['name']??"-"; ?>
                 </td>
                 <td>
-                    <?php echo $item['desc']??"-"; ?>
+                    <?php echo $item['email']??"-"; ?>
                 </td>
                 <td>
-                    <?php echo $item['price']??"-"; ?>
+                    <?php echo $item['password']??"-"; ?>
                     <?php //$item->price; ?>
                 </td>
                 <td>
@@ -40,30 +40,34 @@
     </tbody>
 </table>
 
+<div>
+    <?= false;//$pager->links();?>
+</div>
+
 <form action="" method="post" id="form_editdelete">
-    <input type="hidden" name="id_product" id="id_product" value="" />
+    <input type="hidden" name="id" id="id" value="" />
 </form>
 
 <script>
 
     function create()
     {
-        location.href = '<?php echo base_url('/product/create'); ?>';
+        location.href = '<?php echo base_url('/user/create'); ?>';
     }
 
     function edit(id)
     {
         // alert(id);
-        document.getElementById('form_editdelete').action = '/product/edit';
-        document.getElementById('id_product').value = id;
+        document.getElementById('form_editdelete').action = '/user/edit';
+        document.getElementById('id').value = id;
         document.getElementById("form_editdelete").submit();
     }
 
     function delete_prod(id)
     {
         // alert(id);
-        document.getElementById('form_editdelete').action = '/product/delete';
-        document.getElementById('id_product').value = id;
+        document.getElementById('form_editdelete').action = '/user/delete';
+        document.getElementById('id').value = id;
         document.getElementById("form_editdelete").submit();
     }
 </script>
