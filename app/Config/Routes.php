@@ -21,22 +21,48 @@ $routes->get('/about_us.html', function() {
     ]);
 });
 
-$routes->get('/news', 'NewsController::news');
+$routes->get('/news', 'NewsController::news', ['filter' => 'pgf']);
 $routes->get('/news/create', 'NewsController::create');
 $routes->post('/news/save', 'NewsController::save');
 
+// use App\Filters\PakGuardFilter;
+$routes->group('/product', ['filter' => ['pgf','audit']], static function ($routes) {
+    $routes->get('list', 'ProductController::index');
+    $routes->get('create', 'ProductController::create');
+    $routes->post('save', 'ProductController::save');
+    $routes->post('edit', 'ProductController::edit');
+    $routes->post('delete', 'ProductController::delete');
+});
 
-$routes->get('/product/list', 'ProductController::index');
-$routes->get('/product/create', 'ProductController::create');
-$routes->post('/product/save', 'ProductController::save');
-$routes->post('/product/edit', 'ProductController::edit');
-$routes->post('/product/delete', 'ProductController::delete');
+$routes->group('/user', ['filter' => ['pgf','audit']], static function ($routes) {
+    $routes->get('list', 'UserController::index');
+    $routes->get('create', 'UserController::create');
+    $routes->post('save', 'UserController::save');
+    $routes->post('edit', 'UserController::edit');
+    $routes->post('delete', 'UserController::delete');
+});
 
-$routes->get('/user/list', 'UserController::index');
-$routes->get('/user/create', 'UserController::create');
-$routes->post('/user/save', 'UserController::save');
-$routes->post('/user/edit', 'UserController::edit');
-$routes->post('/user/delete', 'UserController::delete');
+$routes->get('/login/index', 'LoginController::index');
+$routes->post('/login/auth', 'LoginController::auth');
+$routes->post('/login/logout', 'LoginController::logout');
+
+// $routes->get('/list', 'ProductController::index');
+// $routes->get('/create', 'ProductController::create');
+// $routes->post('/save', 'ProductController::save');
+// $routes->post('/edit', 'ProductController::edit');
+// $routes->post('/delete', 'ProductController::delete');
+
+// $routes->get('/product/list', 'ProductController::index');
+// $routes->get('/product/create', 'ProductController::create');
+// $routes->post('/product/save', 'ProductController::save');
+// $routes->post('/product/edit', 'ProductController::edit');
+// $routes->post('/product/delete', 'ProductController::delete');
+
+// $routes->get('/user/list', 'UserController::index');
+// $routes->get('/user/create', 'UserController::create');
+// $routes->post('/user/save', 'UserController::save');
+// $routes->post('/user/edit', 'UserController::edit');
+// $routes->post('/user/delete', 'UserController::delete');
 
 
 $routes->get('/login/index', 'LoginController::index');

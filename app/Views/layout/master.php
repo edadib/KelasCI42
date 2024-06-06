@@ -16,6 +16,11 @@
 
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <!-- <link rel="stylesheet" href="https://cdn.datatables.net/2.0.8/css/dataTables.dataTables.min.css"> -->
+    <!-- <script src="https://cdn.datatables.net/2.0.8/js/dataTables.min.js"></script> -->
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script> -->
+    
+    
 
     <link href="/assets/dist/css/bootstrap.min.css" rel="stylesheet">
 

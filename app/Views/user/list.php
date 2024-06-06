@@ -18,7 +18,7 @@
     <div class="col-1">
     </div>
     <div class="col-10">
-        <table class="table table-bordered table-hover">
+        <table class="table table-bordered table-hover" id="list_user">
             <thead>
                 <tr>
                     <th>
