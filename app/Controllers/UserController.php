@@ -4,6 +4,8 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use Dompdf\Dompdf;
+
 // use App\Models\UserModel;
 
 class UserController extends BaseController
@@ -17,11 +19,13 @@ class UserController extends BaseController
         $this->layout = parent::layout();
         $this->model = model('UserModel');
         $this->session = session();
-        helper('form');
+        helper(['form', 'utility']);
     }
 
     public function index()
     {
+        // echo sumof(1,2);
+        // dd();
          // create 1 new instance of object
         $rows = $this->model->findAll();
         // $rows = $this->model->paginate(2);
@@ -127,5 +131,14 @@ class UserController extends BaseController
         // dd($_POST); // create 1 new instance of object
         $this->model->delete($_POST['id']);
         return redirect()->to('/user/list');
+    }
+
+    function genPDF()
+    {
+        $dompdf = new Dompdf();
+        $html = view('');
+        $dompdf->loadHtml("<h1>Hello World</h1>");
+        $dompdf->render();
+        $dompdf->stream();
     }
 }

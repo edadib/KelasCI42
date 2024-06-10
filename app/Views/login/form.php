@@ -1,4 +1,5 @@
 <div class="row">
+    <div class="col-1"></div>
     <div class="col-10" align="center">
         <h1>Log Masuk</h1>
     </div>
@@ -6,6 +7,7 @@
 <br>
 <?= form_open('/login/auth'); ?>
 <div class="row">
+    <div class="col-1"></div>
     <div class="col-10">
         <?php if(session()->has('msg')) : ?>
             <div class="alert alert-danger">

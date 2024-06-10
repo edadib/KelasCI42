@@ -23,6 +23,7 @@ class LoginController extends BaseController
     {
         //
         // $rows = false;
+        $this->session->destroy();
         $page = 'login/form';
         $layouts = $this->layout;
         return view('layout/default', [
@@ -47,9 +48,11 @@ class LoginController extends BaseController
             {
                 $data = array(
                     'email' => $rows['email'],
+                    'role' => $rows['role'],
                     'isLoggedIn' => true,
                 );
                 $this->session->set($data);
+                // dd($this->session->get('role'));
                 return redirect()->to('/product/list');
             }
             else

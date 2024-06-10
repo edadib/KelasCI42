@@ -3,7 +3,6 @@
         <h1>Daftar Pengguna</h1>
     </div>
     <div class="col" align="right">
-        <button class="btn btn-primary btn-lg mb-2" type="button" onclick="create()">Create</button>
     </div>
 </div>
 <br>

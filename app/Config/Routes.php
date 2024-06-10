@@ -26,7 +26,7 @@ $routes->get('/news/create', 'NewsController::create');
 $routes->post('/news/save', 'NewsController::save');
 
 // use App\Filters\PakGuardFilter;
-$routes->group('/product', ['filter' => ['pgf','audit']], static function ($routes) {
+$routes->group('/product', ['filter' => ['pgf:user','audit']], static function ($routes) {
     $routes->get('list', 'ProductController::index');
     $routes->get('create', 'ProductController::create');
     $routes->post('save', 'ProductController::save');
@@ -34,17 +34,24 @@ $routes->group('/product', ['filter' => ['pgf','audit']], static function ($rout
     $routes->post('delete', 'ProductController::delete');
 });
 
-$routes->group('/user', ['filter' => ['pgf','audit']], static function ($routes) {
+$routes->group('/user', ['filter' => ['pgf:admin','audit']], static function ($routes) {
     $routes->get('list', 'UserController::index');
     $routes->get('create', 'UserController::create');
     $routes->post('save', 'UserController::save');
     $routes->post('edit', 'UserController::edit');
     $routes->post('delete', 'UserController::delete');
+    $routes->get('janapdf', 'UserController::genPDF');
 });
 
 $routes->get('/login/index', 'LoginController::index');
 $routes->post('/login/auth', 'LoginController::auth');
-$routes->post('/login/logout', 'LoginController::logout');
+$routes->get('/login/logout', 'LoginController::logout');
+
+$routes->group('/admin', static function ($routes) {
+    $routes->get('admin', 'AdminController::admin_dashboard');
+    $routes->get('user', 'AdminController::user_dashboard');
+    $routes->get('no_access', 'AdminController::no_access');
+});
 
 // $routes->get('/list', 'ProductController::index');
 // $routes->get('/create', 'ProductController::create');
@@ -65,7 +72,7 @@ $routes->post('/login/logout', 'LoginController::logout');
 // $routes->post('/user/delete', 'UserController::delete');
 
 
-$routes->get('/login/index', 'LoginController::index');
-$routes->post('/login/auth', 'LoginController::auth');
-$routes->post('/login/logout', 'LoginController::logout');
+// $routes->get('/login/index', 'LoginController::index');
+// $routes->post('/login/auth', 'LoginController::auth');
+// $routes->post('/login/logout', 'LoginController::logout');
 
